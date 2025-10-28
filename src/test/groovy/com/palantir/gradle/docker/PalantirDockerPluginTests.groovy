@@ -61,7 +61,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id1'
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
         """.stripIndent()
         buildFile << """
@@ -88,7 +88,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id2'
         file('foo') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
         """.stripIndent()
         buildFile << """
@@ -117,7 +117,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         String id = 'id3'
         String filename = "foo.txt"
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
             ADD ${filename} /tmp/
         """.stripIndent()
@@ -267,7 +267,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id5'
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
         """.stripIndent()
         buildFile << """
@@ -302,7 +302,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id6'
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
         """.stripIndent()
         buildFile << """
@@ -345,7 +345,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id6'
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
         """.stripIndent()
         buildFile << """
@@ -404,7 +404,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id7'
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
             ARG BUILD_ARG_NO_DEFAULT
             ARG BUILD_ARG_WITH_DEFAULT=defaultBuildArg
             ENV ENV_BUILD_ARG_NO_DEFAULT $BUILD_ARG_NO_DEFAULT
@@ -436,7 +436,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         String id = 'id66'
         String filename = "bar.txt"
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             ADD ${filename} /tmp/
         """.stripIndent()
         buildFile << """
@@ -469,7 +469,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id8'
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
         '''.stripIndent()
         buildFile << """
             plugins {
@@ -483,7 +483,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
 
         when:
-        execCond("docker pull alpine:3.2")
+        execCond("docker pull alpine:3.20")
         BuildResult buildResult = with('-i', 'docker').build()
 
         then:
@@ -496,7 +496,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id11'
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
             RUN curl localhost:404
         '''.stripIndent()
         buildFile << """
@@ -530,7 +530,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         String id = 'id9'
         String filename = "bar.txt"
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
             ADD ${filename} /tmp/
         """.stripIndent()
@@ -562,7 +562,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         createFile('from_tgz')
 
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER id
             ADD foo.tgz /tmp/
             ADD from_project /tmp/
@@ -602,7 +602,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         String id = 'id11'
 
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER id
             ADD . /tmp/
         """.stripIndent()
@@ -639,7 +639,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         String id = 'id10'
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
         """.stripIndent()
         buildFile << """
             plugins {
@@ -663,7 +663,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
     def 'fail with bad label key character'() {
         given:
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
         """.stripIndent()
         buildFile << """
             plugins {
@@ -733,7 +733,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         String id = 'id1'
         createFile("myDir/bar")
         file('Dockerfile') << """
-            FROM alpine:3.2
+            FROM alpine:3.20
             MAINTAINER ${id}
             ADD myDir /myDir/
         """.stripIndent()
