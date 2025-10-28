@@ -1,0 +1,54 @@
+name: Gradle Build
+
+on:
+  workflow_call:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '17'
+
+      - name: Set up JDK 21 (for daemon)
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'corretto'
+          java-version: '21'
+
+      - name: Setup Gradle
+        uses: gradle/actions/setup-gradle@v3
+        with:
+          cache-read-only: ${{ github.ref != 'refs/heads/develop' }}
+
+      - name: Run Gradle build
+        run: |
+          ./gradlew --parallel --stacktrace build -x test -x check \
+            -Porg.gradle.java.installations.fromEnv=JAVA_11_HOME,JAVA_17_HOME,JAVA_21_HOME,JAVA_HOME
+
+      - name: Check for modified files
+        run: |
+          FILES_MODIFIED="$(git status --porcelain)"
+          if [[ -n "$FILES_MODIFIED" ]]; then
+            echo "The following files were modified or added during the build process:"
+            echo "$FILES_MODIFIED"
+            echo "This will likely prevent successful publishing. Please run the build locally and include these changes in your pull request."
+            exit 1
+          fi
+
+      - name: Upload build artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: build-artifacts
+          path: |
+            **/build/libs/*.jar
+          retention-days: 7
