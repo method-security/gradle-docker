@@ -4,8 +4,6 @@
 
 Docker Gradle Plugin
 ====================
-[![Build Status](https://circleci.com/gh/palantir/gradle-docker.svg?style=shield)](https://circleci.com/gh/palantir/gradle-docker)
-[![Gradle Plugins Release](https://img.shields.io/github/release/palantir/gradle-docker.svg)](https://plugins.gradle.org/plugin/com.palantir.docker)
 
 Disclaimer: This Repo is now End of Life
 -------------
@@ -18,21 +16,21 @@ Docker Plugin
 -------------
 
 This repository provides three Gradle plugins for working with Docker containers:
-- `com.palantir.docker`: add basic tasks for building and pushing
+- `com.method.docker`: add basic tasks for building and pushing
   docker images based on a simple configuration block that specifies the container
   name, the Dockerfile, task dependencies, and any additional file resources
   required for the Docker build.
-- `com.palantir.docker-compose`: adds a task for populating placeholders in a
+- `com.method.docker-compose`: adds a task for populating placeholders in a
   docker-compose template file with image versions resolved from
   dependencies.
-- `com.palantir.docker-run`: adds tasks for starting, stopping, statusing and cleaning
+- `com.method.docker-run`: adds tasks for starting, stopping, statusing and cleaning
   up a named container based on a specified image
 
 Apply the plugin using standard gradle convention:
 
 ````gradle
 plugins {
-    id 'com.palantir.docker' version '<version>'
+    id 'com.method.docker' version '<version>'
 }
 ````
 
@@ -123,7 +121,7 @@ docker {
 
 Managing Docker image dependencies
 ----------------------------------
-The `com.palantir.docker` and `com.palantir.docker-compose` plugins provide
+The `com.method.docker` and `com.method.docker-compose` plugins provide
 functionality to declare and resolve version-aware dependencies between docker
 images. The primary use-case is to generate `docker-compose.yml` files whose
 image versions are mutually compatible and up-to-date in cases where multiple
@@ -140,7 +138,7 @@ Docker containers.
 ```gradle
 plugins {
     id 'maven-publish'
-    id 'com.palantir.docker'
+    id 'com.method.docker'
 }
 
 ...
@@ -168,7 +166,7 @@ those dependencies.
 
 ### Generating docker-compose.yml files from dependencies
 
-The `com.palantir.docker-compose` plugin uses the transitive dependencies of the
+The `com.method.docker-compose` plugin uses the transitive dependencies of the
 `docker` configuration to populate a `docker-compose.yml.template` file with the
 image versions specified by this project and all its transitive dependencies.
 The plugin uses standard Maven/Ivy machanism for declaring and resolving
@@ -204,7 +202,7 @@ otherservice:
 
 ```gradle
 plugins {
-    id 'com.palantir.docker-compose'
+    id 'com.method.docker-compose'
 }
 
 dependencies {
@@ -245,7 +243,7 @@ Apply the plugin using standard gradle convention:
 
 ```gradle
 plugins {
-    id 'com.palantir.docker-run' version '<version>'
+    id 'com.method.docker-run' version '<version>'
 }
 ```
 

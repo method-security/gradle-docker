@@ -22,13 +22,13 @@ import org.gradle.testkit.runner.BuildResult
 import org.gradle.testkit.runner.TaskOutcome
 import spock.lang.Ignore
 
-class PalantirDockerPluginTests extends AbstractPluginTest {
+class MethodDockerPluginTests extends AbstractPluginTest {
 
     def 'fail when missing docker configuration'() {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
         '''.stripIndent()
 
@@ -43,7 +43,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
             docker {
                 name ''
@@ -66,7 +66,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -93,7 +93,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -123,7 +123,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -153,7 +153,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
             docker {
                 name '${id}'
@@ -184,7 +184,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
             plugins {
                 id 'java'
                 id 'maven-publish'
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -248,8 +248,8 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         file('Dockerfile') << "Foo"
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker'
+                id 'com.method.docker-compose'
             }
 
             docker {
@@ -272,7 +272,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -307,7 +307,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -350,7 +350,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -412,7 +412,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -441,7 +441,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -473,7 +473,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -501,7 +501,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -536,7 +536,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -569,7 +569,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             task myTgz(type: Tar) {
@@ -614,7 +614,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
 
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
                 id 'java'
                 id 'application'
             }
@@ -643,7 +643,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -667,7 +667,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {
@@ -686,7 +686,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
 
     def 'check if compute name replaces the name correctly'() {
         expect:
-        PalantirDockerPlugin.computeName(name, tag) == result
+        MethodDockerPlugin.computeName(name, tag) == result
 
         where:
         name             | tag      | result
@@ -739,7 +739,7 @@ class PalantirDockerPluginTests extends AbstractPluginTest {
         """.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
+                id 'com.method.docker'
             }
 
             docker {

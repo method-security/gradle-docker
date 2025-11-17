@@ -41,7 +41,7 @@ apply plugin: 'com.palantir.failure-reports'
 apply plugin: 'com.palantir.baseline-java-versions'
 apply plugin: 'com.palantir.jdks.latest'
 
-group 'com.palantir.gradle.docker'
+group 'com.method.gradle.docker'
 version System.env.CIRCLE_TAG ?: gitVersion()
 
 dependencies {
@@ -55,20 +55,20 @@ dependencies {
 gradlePlugin {
     plugins {
         dockerPlugin {
-            id = 'com.palantir.docker'
-            displayName = 'Palantir Gradle Docker'
-            implementationClass = 'com.palantir.gradle.docker.PalantirDockerPlugin'
+            id = 'com.method.docker'
+            displayName = 'Method Gradle Docker'
+            implementationClass = 'com.palantir.gradle.docker.MethodDockerPlugin'
             description = 'Gradle Docker is a simple docker orchestrator for executing docker build and push from within Gradle.'
         }
         dockerComposePlugin {
-            id = 'com.palantir.docker-compose'
-            displayName = 'Palantir Gradle Docker-Compose'
+            id = 'com.method.docker-compose'
+            displayName = 'Method Gradle Docker-Compose'
             implementationClass = 'com.palantir.gradle.docker.DockerComposePlugin'
             description = 'Gradle Docker is a simple docker orchestrator for executing docker build and push from within Gradle.'
         }
         dockerRunPlugin {
-            id = 'com.palantir.docker-run'
-            displayName = 'Palantir Gradle Docker-Run'
+            id = 'com.method.docker-run'
+            displayName = 'Method Gradle Docker-Run'
             implementationClass = 'com.palantir.gradle.docker.DockerRunPlugin'
             description = 'Gradle Docker is a simple docker orchestrator for executing docker build and push from within Gradle.'
         }

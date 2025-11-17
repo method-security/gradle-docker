@@ -33,7 +33,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             repositories {
@@ -71,7 +71,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             repositories {
@@ -99,7 +99,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             repositories {
@@ -124,7 +124,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         file('Dockerfile') << "Foo"
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             dockerCompose {
@@ -143,7 +143,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         file('docker-compose.yml') << "FOO"
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
         '''.stripIndent()
         when:
@@ -166,7 +166,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
         '''.stripIndent()
         when:
@@ -191,7 +191,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             dockerCompose {
@@ -214,7 +214,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
 
             generateDockerCompose.ext.foo = "bar"
@@ -237,7 +237,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-compose'
+                id 'com.method.docker-compose'
             }
         '''.stripIndent()
         when:
