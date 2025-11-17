@@ -9,8 +9,6 @@ This is a Gradle plugin repository that provides three Docker-related Gradle plu
 - `com.palantir.docker-compose` - Generate docker-compose files with resolved dependencies
 - `com.palantir.docker-run` - Run, stop, and manage Docker containers
 
-**Important**: This repository is End of Life - no new features will be accepted and bugs may not be fixed. It is no longer used internally at Palantir.
-
 ## Build Commands
 
 ### Running Tests
