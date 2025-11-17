@@ -30,8 +30,8 @@ class DockerRunPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
-                id 'com.palantir.docker-run'
+                id 'com.method.docker'
+                id 'com.method.docker-run'
             }
 
             docker {
@@ -72,7 +72,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-run'
+                id 'com.method.docker-run'
             }
 
             dockerRun {
@@ -108,7 +108,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-run'
+                id 'com.method.docker-run'
             }
             dockerRun {
                 name 'bar-hostnetwork'
@@ -132,7 +132,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-run'
+                id 'com.method.docker-run'
             }
 
             dockerRun {
@@ -160,7 +160,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         buildFile << '''
             plugins {
-                id 'com.palantir.docker-run'
+                id 'com.method.docker-run'
             }
 
             dockerRun {
@@ -187,8 +187,8 @@ class DockerRunPluginTests extends AbstractPluginTest {
           '''.stripIndent()
         buildFile << '''
                 plugins {
-                     id 'com.palantir.docker'
-                     id 'com.palantir.docker-run'
+                     id 'com.method.docker'
+                     id 'com.method.docker-run'
                 }
                  docker {
                      name 'foo-image:latest'
@@ -233,8 +233,8 @@ class DockerRunPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
-                id 'com.palantir.docker-run'
+                id 'com.method.docker'
+                id 'com.method.docker-run'
             }
 
             docker {
@@ -280,8 +280,8 @@ class DockerRunPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << """
             plugins {
-                id 'com.palantir.docker'
-                id 'com.palantir.docker-run'
+                id 'com.method.docker'
+                id 'com.method.docker-run'
             }
 
             docker {
@@ -324,8 +324,8 @@ class DockerRunPluginTests extends AbstractPluginTest {
         '''.stripIndent()
         buildFile << '''
             plugins {
-                id 'com.palantir.docker'
-                id 'com.palantir.docker-run'
+                id 'com.method.docker'
+                id 'com.method.docker-run'
             }
 
             docker {

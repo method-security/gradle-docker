@@ -34,16 +34,16 @@ import org.gradle.api.tasks.bundling.Zip
 import javax.inject.Inject
 import java.util.regex.Pattern
 
-class PalantirDockerPlugin implements Plugin<Project> {
+class MethodDockerPlugin implements Plugin<Project> {
 
-    private static final Logger log = Logging.getLogger(PalantirDockerPlugin.class)
+    private static final Logger log = Logging.getLogger(MethodDockerPlugin.class)
     private static final Pattern LABEL_KEY_PATTERN = Pattern.compile('^[a-z0-9.-]*$')
 
     private final ObjectFactory objectFactory
     private final AttributesFactory attributesFactory
 
     @Inject
-    PalantirDockerPlugin(ObjectFactory objectFactory, AttributesFactory attributesFactory) {
+    MethodDockerPlugin(ObjectFactory objectFactory, AttributesFactory attributesFactory) {
         this.objectFactory = objectFactory
         this.attributesFactory = attributesFactory
     }

@@ -5,9 +5,9 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 ## Project Overview
 
 This is a Gradle plugin repository that provides three Docker-related Gradle plugins:
-- `com.palantir.docker` - Build and push Docker images
-- `com.palantir.docker-compose` - Generate docker-compose files with resolved dependencies
-- `com.palantir.docker-run` - Run, stop, and manage Docker containers
+- `com.method.docker` - Build and push Docker images
+- `com.method.docker-compose` - Generate docker-compose files with resolved dependencies
+- `com.method.docker-run` - Run, stop, and manage Docker containers
 
 ## Build Commands
 
@@ -18,7 +18,7 @@ This is a Gradle plugin repository that provides three Docker-related Gradle plu
 
 ### Running a Specific Test
 ```bash
-./gradlew test --tests "com.palantir.gradle.docker.PalantirDockerPluginTests"
+./gradlew test --tests "com.palantir.gradle.docker.MethodDockerPluginTests"
 ```
 
 ### Building (without tests)
@@ -38,19 +38,19 @@ Note: `publishPlugins` task only runs if the current state is a clean tag.
 ### Plugin Structure
 The codebase is organized into three main plugins, each with its own entry point:
 
-1. **PalantirDockerPlugin** (`com.palantir.docker`)
-   - Entry point: `src/main/groovy/com/palantir/gradle/docker/PalantirDockerPlugin.groovy`
+1. **MethodDockerPlugin** (`com.method.docker`)
+   - Entry point: `src/main/groovy/com/palantir/gradle/docker/MethodDockerPlugin.groovy`
    - Extension: `DockerExtension.groovy`
    - Creates tasks: `docker`, `dockerPrepare`, `dockerClean`, `dockerTag*`, `dockerPush*`, `dockerfileZip`
    - Builds Docker images based on configuration and Dockerfile
 
-2. **DockerComposePlugin** (`com.palantir.docker-compose`)
+2. **DockerComposePlugin** (`com.method.docker-compose`)
    - Entry point: `src/main/groovy/com/palantir/gradle/docker/DockerComposePlugin.groovy`
    - Extension: `DockerComposeExtension.groovy`
    - Creates tasks: `generateDockerCompose`, `dockerComposeUp`, `dockerComposeDown`
    - Resolves Docker image dependencies and populates template files
 
-3. **DockerRunPlugin** (`com.palantir.docker-run`)
+3. **DockerRunPlugin** (`com.method.docker-run`)
    - Entry point: `src/main/groovy/com/palantir/gradle/docker/DockerRunPlugin.groovy`
    - Extension: `DockerRunExtension.groovy`
    - Creates tasks: `dockerRun`, `dockerStop`, `dockerRunStatus`, `dockerRemoveContainer`
@@ -68,7 +68,7 @@ The codebase is organized into three main plugins, each with its own entry point
 
 Tests are located in `src/test/groovy/com/palantir/gradle/docker/`:
 - `AbstractPluginTest.groovy` - Base test class with helper methods
-- `PalantirDockerPluginTests.groovy` - Tests for main Docker plugin
+- `MethodDockerPluginTests.groovy` - Tests for main Docker plugin
 - `DockerComposePluginTests.groovy` - Tests for compose plugin
 - `DockerRunPluginTests.groovy` - Tests for run plugin
 
