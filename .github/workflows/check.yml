@@ -18,9 +18,6 @@ jobs:
           distribution: 'corretto'
           java-version: '21'
 
-      - name: Set up Docker Compose
-        uses: docker/setup-compose-action@v1
-
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v3
         with:
