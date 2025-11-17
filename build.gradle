@@ -88,7 +88,7 @@ publishing {
     repositories {
         maven {
             name = "method-artifacts"
-            url = System.getenv('CODEARTIFACT_REPOSITORY_URL') ?: "https://method-artifacts-008971672637.d.codeartifact.us-east-1.amazonaws.com/maven/maven-internal/"
+            url = System.getenv('CODEARTIFACT_REPOSITORY_URL')
             credentials {
                 username = "aws"
                 password = System.getenv('CODEARTIFACT_TOKEN')
