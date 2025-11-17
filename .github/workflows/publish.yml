@@ -68,6 +68,7 @@ jobs:
             -Porg.gradle.java.installations.fromEnv=JAVA_21_HOME,JAVA_HOME
         env:
           CODEARTIFACT_TOKEN: ${{ env.CODEARTIFACT_TOKEN }}
+          CODEARTIFACT_REPOSITORY_URL: ${{ secrets.CODEARTIFACT_REPOSITORY_URL }}
 
   check:
     name: ✅ Check
