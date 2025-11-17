@@ -36,8 +36,8 @@ class DockerComposeDown extends DefaultTask {
     @TaskAction
     void run() {
         GradleExecUtils.execWithErrorMessage(project) {
-            it.executable "docker-compose"
-            it.args "-f", getDockerComposeFile(), "down"
+            it.executable "docker"
+            it.args "compose", "-f", getDockerComposeFile(), "down"
         }
     }
 

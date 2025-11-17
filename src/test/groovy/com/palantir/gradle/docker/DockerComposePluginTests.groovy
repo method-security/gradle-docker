@@ -149,7 +149,7 @@ class DockerComposePluginTests extends AbstractPluginTest {
         when:
         BuildResult buildResult = with('dockerComposeUp', "--stacktrace").buildAndFail()
         then:
-        buildResult.output.contains("Top-level object must be a mapping")
+        buildResult.output.contains("cannot unmarshal")
     }
 
     def 'docker-compose successfully creates docker image'() {

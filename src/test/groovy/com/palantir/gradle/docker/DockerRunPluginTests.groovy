@@ -25,7 +25,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
     def 'can run, status, and stop a container made by the docker plugin' () {
         given:
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
             CMD sleep 1000
         '''.stripIndent()
         buildFile << '''
@@ -77,7 +77,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
 
             dockerRun {
                 name 'bar'
-                image 'alpine:3.2'
+                image 'alpine:3.20'
                 ports '8080'
                 command 'sleep', '1000'
             }
@@ -112,7 +112,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
             }
             dockerRun {
                 name 'bar-hostnetwork'
-                image 'alpine:3.2'
+                image 'alpine:3.20'
                 network 'host'
             }
         '''.stripIndent()
@@ -137,7 +137,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
 
             dockerRun {
                 name 'bar-nodaemonize'
-                image 'alpine:3.2'
+                image 'alpine:3.20'
                 ports '8080'
                 command 'echo', '"hello world"'
                 daemonize false
@@ -165,7 +165,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
 
             dockerRun {
                 name 'bar-ignore-exit-code'
-                image 'alpine:3.2'
+                image 'alpine:3.20'
                 ports '8080'
                 command 'exit', '100'
                 ignoreExitValue true
@@ -182,7 +182,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
     def 'can set additional arguments'() {
         given:
         file('Dockerfile') << '''
-                FROM alpine:3.2
+                FROM alpine:3.20
                  RUN mkdir /test
           '''.stripIndent()
         buildFile << '''
@@ -225,7 +225,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         File testFolder = directory("test")
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
 
             RUN mkdir /test
             VOLUME /test
@@ -272,7 +272,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
         given:
         File testFolder = directory("test")
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
 
             RUN mkdir /test
             VOLUME /test
@@ -312,7 +312,7 @@ class DockerRunPluginTests extends AbstractPluginTest {
     def 'can run with environment variables'() {
         given:
         file('Dockerfile') << '''
-            FROM alpine:3.2
+            FROM alpine:3.20
 
             RUN mkdir /test
             VOLUME /test

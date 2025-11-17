@@ -35,15 +35,15 @@ class DockerComposeUp extends DefaultTask {
     @TaskAction
     void run() {
         GradleExecUtils.execWithErrorMessage(project) {
-            it.executable "docker-compose"
-            it.args "-f", getDockerComposeFile(), "up", "-d"
+            it.executable "docker"
+            it.args "compose", "-f", getDockerComposeFile(), "up", "-d"
         }
     }
 
     @Internal
     @Override
     String getDescription() {
-        def defaultDescription = "Executes `docker-compose` using ${dockerComposeFile.name}"
+        def defaultDescription = "Executes `docker compose` using ${dockerComposeFile.name}"
         return super.description ?: defaultDescription
     }
 

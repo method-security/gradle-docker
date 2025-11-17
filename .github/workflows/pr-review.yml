@@ -1,0 +1,29 @@
+name: PR Review
+
+on:
+  pull_request:
+
+jobs:
+  checkstyle:
+    name: Checkstyle
+    uses: ./.github/workflows/check.yml
+
+  build:
+    name: Build
+    uses: ./.github/workflows/build.yml
+
+  check:
+    name: ✅ Check
+    if: always()
+
+    needs:
+      - checkstyle
+      - build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Require all jobs to succeed
+        uses: re-actors/alls-green@release/v1
+        with:
+          jobs: ${{ toJSON(needs) }}
