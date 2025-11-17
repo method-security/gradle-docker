@@ -76,7 +76,7 @@ Tests use GradleTestKit and Spock framework. The `AbstractPluginTest` provides u
 
 ## Gradle Configuration
 
-- **Java Target**: Library targets Java 17 (configured in `javaVersions { libraryTarget = 17 }`)
+- **Java Target**: Library targets Java 21
 - **Daemon Target**: JDK 21 for Gradle daemon
 - **Test Gradle Versions**: Tests run against Gradle 8.14.3
 - **Parallel Builds**: Enabled via `org.gradle.parallel=true`
@@ -106,16 +106,8 @@ GitHub Actions is configured with a modular workflow structure:
   - `reusable-build.yml` - Runs `./gradlew build -x test -x check` to compile and package
 
 ### Key Features
-- Uses Amazon Corretto JDK 17 for building (JDK 21 available for daemon)
+- Uses Amazon Corretto JDK 21
 - Gradle caching is enabled for faster builds
 - Enforces that no git-tracked files are modified during the build process
 - Uploads test results and build artifacts for inspection
 - Publishes test results directly to PR for easy review
-
-### Future Publishing
-The `publish.yml` workflow has a commented-out publish job that can be enabled when artifact publishing is configured. It will require:
-- Setting up `GRADLE_KEY` and `GRADLE_SECRET` as repository secrets
-- Uncommenting the publish job in `.github/workflows/publish.yml`
-
-### Original CircleCI
-The upstream Palantir repository uses CircleCI, which is preserved in `.circleci/config.yml` for reference.
