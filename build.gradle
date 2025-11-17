@@ -8,7 +8,6 @@ buildscript {
         classpath 'com.palantir.gradle.jdks:gradle-jdks:0.69.0'
         classpath 'com.palantir.gradle.jdkslatest:gradle-jdks-latest:0.23.0'
         classpath 'com.palantir.gradle.plugintesting:gradle-plugin-testing:0.6.0'
-        classpath 'com.palantir.gradle.externalpublish:gradle-external-publish-plugin:1.26.0'
         classpath 'com.palantir.gradle.failure-reports:gradle-failure-reports:1.17.0'
         classpath 'com.palantir.javaformat:gradle-palantir-java-format:2.81.0'
         classpath 'com.palantir.suppressible-error-prone:gradle-suppressible-error-prone:2.24.0'
@@ -20,9 +19,6 @@ buildscript {
     }
 }
 
-plugins {
-    id 'com.gradle.plugin-publish' version '2.0.0'
-}
 allprojects {
     apply plugin: 'com.palantir.java-format'
     apply plugin: 'com.palantir.jakarta-package-alignment'
@@ -32,16 +28,15 @@ repositories {
     mavenCentral() { metadataSources { mavenPom(); ignoreGradleMetadataRedirection() } }
 }
 
-apply plugin: 'com.palantir.external-publish'
 apply plugin: 'java-gradle-plugin'
 apply plugin: 'groovy'
+apply plugin: 'maven-publish'
 apply plugin: 'com.palantir.baseline'
 apply plugin: 'com.palantir.consistent-versions'
 apply plugin: 'com.palantir.git-version'
 apply plugin: 'com.palantir.gradle-guide'
 apply plugin: 'com.palantir.gradle-plugin-testing'
 apply plugin: 'com.palantir.jdks'
-apply plugin: 'com.palantir.external-publish-jar'
 apply plugin: 'com.palantir.failure-reports'
 apply plugin: 'com.palantir.baseline-java-versions'
 apply plugin: 'com.palantir.jdks.latest'
@@ -80,12 +75,30 @@ gradlePlugin {
     }
 }
 
-publishPlugins.onlyIf { versionDetails().isCleanTag }
+publishing {
+    publications {
+        mavenJava(MavenPublication) {
+            from components.java
+            groupId = project.group
+            artifactId = project.name
+            version = project.version
+        }
+    }
 
-// Configure the publishPlugins task
-tasks.publish.dependsOn publishPlugins
-project.ext.'gradle.publish.key' = System.env["GRADLE_KEY"]
-project.ext.'gradle.publish.secret' = System.env["GRADLE_SECRET"]
+    repositories {
+        maven {
+            name = "method-artifacts"
+            url = System.getenv('CODEARTIFACT_REPOSITORY_URL') ?: "https://method-artifacts-008971672637.d.codeartifact.us-east-1.amazonaws.com/maven/maven-internal/"
+            credentials {
+                username = "aws"
+                password = System.getenv('CODEARTIFACT_TOKEN')
+            }
+            authentication {
+                basic(BasicAuthentication)
+            }
+        }
+    }
+}
 
 javaVersions {
     libraryTarget = 21
