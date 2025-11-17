@@ -76,7 +76,6 @@ jobs:
     needs:
       - checkstyle
       - build
-      - publish
 
     runs-on: ubuntu-latest
 
